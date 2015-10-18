@@ -434,6 +434,7 @@ excanvas = function (canvasObject) {
   };
 
   contextPrototype.drawImage = function (image, var_args) {
+	  console.log("jason");
     var dx, dy, dw, dh, sx, sy, sw, sh;
 
     // to find the original width we overide the width and height

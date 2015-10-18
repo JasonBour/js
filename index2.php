@@ -3,24 +3,15 @@
 	
    ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
 <title></title> 
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    
-		
-<!--
-		<script type="text/javascript" src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
-		<script src="booklet/jquery.easing.1.3.js" type="text/javascript"></script>
-		<script src="booklet/jquery.booklet.1.1.0.min.js" type="text/javascript"></script>
 
-		<link href="booklet/jquery.booklet.1.1.0.css" type="text/css" rel="stylesheet" media="screen" />
-		<link rel="stylesheet" href="css/style.css" type="text/css" media="screen"/>
-		-->
 		<style type="text/css" media="screen">
-		body 	{ font: 75% "Lucida Grande", "Trebuchet MS", Verdana, sans-serif; }
+		body 	{ font: 75% "Lucida Grande", "Trebuchet MS", Verdana, sans-serif; background-color: #333333;}
 		canvas 	{ background-color: transparent; border: 1px solid gray; top: 0; left: 0; position: absolute;}
 		canvas.resize-ne { cursor: ne-resize; }
 		canvas.resize-se { cursor: se-resize; }
@@ -30,25 +21,31 @@
 		canvas.default { cursor: default; }
 		
 		input 	{ margin-left: 20px; }
-		fieldset {   width: 100%; }
-		.fieldset {  width: 100%; }
-		#ft 	{  height: 96px; width: 99%; border-top: 1px solid ; padding: 5px; position: absolute; top: 0; left: 0; }
+		fieldset {   width: 80%; }
+		.fieldset {  width: 80%; }
+		#ft 	{  height: 96px; width: 99%; border-top: 1px solid ; padding: 5px; position: absolute;  top: 0; left: 0; }
 		#ft span { width: 100%; }
+		#templates {height: 96px; width: 99%; margin-top:34% ; position: absolute;  left: 0;}
+
+           ul,li { list-style:none}
+ .footer { position:relative; margin:20px auto; width:440px;}
+ .footer .prev,.img-scroll .next { position:absolute; display:block; width:50px; height:100px; background-color:#000;
+ top:0; color:#FFF; text-align:center; line-height:100px}
+ .footer .prev { left:0;cursor:pointer;}
+ .footer .next { right:0;cursor:pointer;}
+ .img-list { position:relative; width:920px; height:100px; margin-left:10px; overflow:hidden}
+ .img-list ul { width:9999px;}
+ .img-list li { float:left; display:inline; width:100px; margin-right:10px; height:100px; background-color:#BDBDDF; text-align:center; line-height:100px;}
+
+
+
 	</style>
     </head>
     <body id="canvasdemo" onLoad="">
 	<canvas id="canvid1"></canvas>
-	<!--
-	<img id="img4" src="canvas_files/4.jpg" />
-	<img id="img1" src="canvas_files/7.jpg" />
-	<img id="img2" src="canvas_files/8.png" />
-	<img id="img3" src="canvas_files/9.jpg" />
-	<img id="img4" src="canvas_files/5.jpg" />
-	<img id="bg" src="canvas_files/bg.jpg" />
-	
-   -->
-   <img id="jason" src="canvas_files/8.png" style="visibility:hidden;"/>
+   
    <?php
+   
    for($i=0;$i<count($files);$i++){
   echo "<img id='img$i' src='$files[$i]' style='display: block; visibility: hidden; position: absolute; top: -1000; left: -1000;'>";
   echo "<br/>";
@@ -60,96 +57,144 @@
 	<fieldset>
 			<legend>Photo</legend>
 			<?php 
+			
 			for($i=0;$i<count($files);$i++){?>
 			
-            <img name='<?php echo 'img'.$i ;?>' src='<?php echo $files[$i] ;?>' onClick="add(this)" style="height:70px">
+            <img name='<?php echo 'img'.$i ;?>' src='<?php echo $files[$i] ;?>' id='<?php echo 'img'.$i ;?>' onClick="add(this)" style="height:70px">
 			<?php
 			}
 
 			?>
-			<!--
-			<img src="canvas_files/8.png" style="height:70px"  onClick="add(this)" name="img2" id="togglepolaroid">
-			<img src="canvas_files/8.png" style="height:70px"name="img3" onClick="add(this)">
-			<img src="canvas_files/8.png" style="height:70px">
-			<img src="canvas_files/8.png" style="height:70px">
-			-->
+			<input type="button" value="Add  more photos" style="float: right"></input>
 		</fieldset>
 </div>
-	<div id="toggle"  style="margin-left: 40%" > 
+ 
+	<div id="toggle"  style="margin-left: 50%" > 
 		<img src="Images/slide.png">
 		 </div>
 		</div>
-	
-	   
+ <div id="templates"   >		 
+	<div id="footer">	
+	<fieldset>   
+	<div class="img-list">
+	<img src="Images/slide.png" style="float: left;" class="prev">
+		<ul>       
+       <?php 
+			for($i=0;$i<count($files1);$i++){?>
+			
+            <li class='<?php echo 'tem'.$i ;?>'><img  src='<?php echo $files1[$i] ;?>' name='<?php echo 'tem'.$i ;?>' onClick="addTem(this)" style="height:70px"></li>
+            
+			<?php
+			 echo "<img id='tem$i' src='$files1[$i]' style='display: block; visibility: hidden; position: absolute; top: -1000; left: -1000;'>";
+			}
 
+			?>
+             </ul>
+             </div>
+             <span class="next">next</span>
+			</fieldset>
+	  </div>				
+		</div>
 
-				<script src="canvas_files/utilitie.js" type="text/javascript" charset="utf-8"></script>
+	<script src="canvas_files/utilitie.js" type="text/javascript" charset="utf-8"></script>
 	<script src="canvas_files/canvasEl.js" type="text/javascript" charset="utf-8" ></script>
 	<script src="canvas_files/canvasIm.js" type="text/javascript" charset="utf-8"></script>
-	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.6.4/jquery.js"></script>
+	<script type="text/javascript" src="jquery.js"></script>
+  <script type="text/javascript" charset="utf-8">
+ function DY_scroll(wraper,prev,next,img,speed,or)
+ { 
+  var wraper = $(wraper);
+  var prev = $(prev);
+  var next = $(next);
+  var img = $(img).find('ul');
+  var w = img.find('li').outerWidth(true);
+  var s = speed;
+  next.click(function()
+       {
+        img.animate({'margin-left':-w},function()
+                  {
+                   img.find('li').eq(0).appendTo(img);
+                   img.css({'margin-left':0});
+                   });
+        });
+  prev.click(function()
+       {
+        img.find('li:last').prependTo(img);
+        img.css({'margin-left':-w});
+        img.animate({'margin-left':0});
+        });
+  if (or == true)
+  {
+   ad = setInterval(function() { next.click();},s*1000);
+   wraper.hover(function(){clearInterval(ad);},function(){ad = setInterval(function() { next.click();},s*1000);});
+
+  }
+ }
+ DY_scroll('.footer','.prev','.next','.img-list',3,false);
+  
+  </script>
+
+
 	<script type="text/javascript" charset="utf-8">
-	  function move(){
-            var haederDiv = document.getElementById('ft');
-            haederDiv.style.visibility="hidden";
-            alert("set");
-	  }
-
-
+	 
      $(function(){
+		 
            $('#toggle').click(
            	function(){
             if($('#header').is(':hidden')){
            		$('#header').slideDown('slow');
-           		//$('#toggle').value('slideUp');
+           		
             }else{
             	$('#header').slideUp('slow');
-            	$('#toggle').value('slideDown');
+            	
             }
 
            	}
 	);
+	  
+	
+	  
 
      });
 
-  	
+
 	</script>
+	
 	<script type="text/javascript" charset="utf-8">
 	  
 	    function add(th){
+	 
 	  var	id =th.name; 
 		 
 		 CanvasDemo.togglePolaroid(id);
-	 }
+	 };
+
+	 function addTem(th){
+       alert("更换模板会导致当前进度丢失，请先保存当前任务");
+	 	var	id =th.name; 
+		var li = $(id);
+         li.css({'background-color':'#5344C3'});
+		 CanvasDemo.AddTemplate(id);
+
+	 };
 	
 		var CanvasDemo = function() {
 		
 			var YD = YAHOO.util.Dom;
 			var YE = YAHOO.util.Event;
-			
+			 var template_id = "tem1" ; 	
 			var canvas1 = new Canvas.Element();
 			
 			var img = [];
 			return {
 				init: function() {
-					
-					canvas1.init('canvid1',  { width: YD.getViewportWidth() - 5, height: YD.getViewportHeight() - 5 });			
-					img[img.length] = new Canvas.Img('jason', {});
-					
-				
-					
-					
-					
-					
-					
+					 //ÆÁÄ»µÄ´óÐ¡
+					canvas1.init('canvid1',  { width: YD.getViewportWidth()-250, height: YD.getViewportHeight() - 105 });			
+					img[img.length] = new Canvas.Img(template_id, {});					
 					// @param array of images ToDo: individual images
 					
 					canvas1.addImage(img[0]);
-					
-					
-				
-					
-					
-					//this.adaback();
+					canvas1._aImages[0].setCornersVisibility(true);
 					
 					this.initEvents();
 				},
@@ -192,17 +237,33 @@
 				
 				
 				togglePolaroid: function(imageid) {
- var context = canvas1.getContext("2d");
-					context.clearRect(0,0,Canvas.height,Canvas.width);
-				      canvas1.addImage(new Canvas.Img(imageid,{}));
+					if(canvas1._aImages.length==2){
+						canvas1._aImages=[];
+							alert("clear");	
+						}
+             
+					
+					 
+				    canvas1.addImage(new Canvas.Img(imageid,{}));
+					 
+				      //canvas1.addImage(new Canvas.Img("jason",{})); 
+				//context.drawImage(img,0,0);
+				     //   canvas1.AddTemplate(new Canvas.Img("img1",{}));
 				
 				
-				
-				
-				
-				
+					for (var i = 0, l = canvas1._aImages.length; i < l; i += 1) {
+						canvas1._aImages[i].setCornersVisibility(true);
+					}
+					canvas1.renderAll();
+								
 				
 				},
+			    AddTemplate:	function(imageid){
+			    	 //canvas1.AddTemplate(new Canvas.Img("tem1",{}));
+			    	canvas1._aImages=[];
+			    	canvas1.addImage(new Canvas.Img(imageid,{})); 
+			    	canvas1._aImages[0].setCornersVisibility(true);
+			    } ,
 				
 				
 				convertTo: function(format) {
@@ -217,15 +278,7 @@
 		}();
 		
 		
-		
-		
-		YAHOO.util.Event.on(window, 'load', CanvasDemo.init, CanvasDemo, true);
-		
-		
-	
-
-
-                  
+		YAHOO.util.Event.on(window, 'load', CanvasDemo.init, CanvasDemo, true);                  
 </script>
     </body>
 </html>
