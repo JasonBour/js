@@ -37,6 +37,9 @@ var Canvas = window.Canvas || {};
 	 * @property _aImages
 	 * @type object
 	 */
+	 /*
+	 *  这个是保存添加图片的数组
+     */
 	Canvas.Element.prototype._aImages = null;
 	
 	/**
@@ -249,11 +252,17 @@ var Canvas = window.Canvas || {};
 		
 		// determine whether we clicked the image
 		var oImg = this.findTargetImage(mp, false);
+		//这个表示在没有图片的地方点击(不包括背景图)
 		if (!oImg) {
+
 			this._groupSelector = { ex: mp.ex, ey: mp.ey,
 				 					top: 0, left: 0 };
+
+		//this._aImages.push(new Canvas.Img('px',{}));
+		this.addImage(new Canvas.Img('px',{}));		 					
 		}
 		else { 
+          // oImg = this._aImages[1];
 			// determine if it's a drag or rotate case
 			// rotate and scale will happen at the same time
 			var action = (!this.findTargetCorner(mp, oImg)) ? 'drag' : 'rotate';
@@ -265,6 +274,7 @@ var Canvas = window.Canvas || {};
 				this.onDragMove.fire(e);
 			}
 			
+			
 			this._currentTransform = { 
 				target: oImg,
 				action: action,
@@ -275,7 +285,7 @@ var Canvas = window.Canvas || {};
 				left: oImg.left, top: oImg.top,
 				theta: oImg.theta 
 			};
-									
+						
 			// we must render all so the active image is placed in the canvastop
 			this.renderAll(false);
 		}

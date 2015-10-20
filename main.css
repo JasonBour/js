@@ -1,0 +1,128 @@
+html,body{
+    background:url(image/cardboard.png);
+    height:100%;
+    padding:0;
+    margin:0;
+    min-width:1003px;
+    text-shadow:0 1px 3px rgba(0, 0, 0, 0.75);
+    color:#fff;
+    font-family:Microsoft Yahei,"宋体";
+    overflow:hidden;
+}
+li{
+    list-style:none;
+}
+h3{
+    font-weight:normal;
+    text-align:center;
+    height:30px;
+    line-height:30px;
+    font-size:16px;
+}
+.header{
+    border-bottom:1px solid #575C62;
+    text-align:center;
+    margin:0;
+    height:40px;
+    line-height:40px;
+    background:#26292d;
+}
+.wrapper{
+    border-top:1px solid #282B2F;
+    height:100%;
+    /*
+    display:box;
+    display:-webkit-box;
+    display:-moz-box;
+    box-orient:horizontal;
+    -webkit-box-orient:horizontal;
+    */
+}
+.left{
+    width:250px;
+    border-right:1px solid #575C62;
+    height:100%;
+    overflow-y:auto;
+    overflow-x:hidden;
+    float:right;
+    padding:0;
+}
+.right{
+    /*
+    box-flex:1;
+    -webkit-box-flex:1;
+    -moz-box-flex:1;
+    */
+    border-left:1px solid #282B2F;
+    width:600px;
+    float:left;
+}
+.effects{
+    border-top:1px solid #575C62;
+    border-bottom:1px solid #282B2F;
+    padding:0;
+}
+.effects li{
+    margin-left:0;
+    border-top:1px solid #282B2F;
+    border-bottom:1px solid #575C62;
+    list-style:none;
+     transition:all ease-in .2s;
+    -webkit-transition:all ease-in .2s;
+   height:80px;
+   overflow:hidden;
+}
+.imgWrapper{
+    margin:0px;
+    margin-left:15px;
+    padding:0;
+    line-height:80px;
+    border-top-left-radius:10px;
+    border-bottom-left-radius:10px;
+    width:250px;
+    transition:all ease-in .2s;
+    -webkit-transition:all ease-in .2s;
+    position:relative;
+    height:80px;
+    cursor:pointer;
+}
+.imgWrapper img{
+    margin:0;
+    width:100px;
+    height:60px;
+    left:0;
+    top:10px;
+    position:absolute;
+    border:none;
+    border-radius:10px;
+    z-index:3;
+    cursor:pointer;
+}
+#infoMsg{
+    position:absolute;
+    top:170px;
+    left:450px;
+    z-index:9;
+    width:100px;
+    height:100px;
+    text-align:center;
+    line-height:100px;
+    background:#333;
+    border-radius:4px;
+    opacity:0.7;
+    display:none;
+    color:#ccc;
+}
+.imgWrapper{
+    width:250px;
+    padding-left:110px;
+}
+.imgWrapper img:hover{
+    box-shadow:0 0 10px #52cca0;
+    -webkit-box-shadow:0 0 10px #52cca0;
+    -moz-box-shadow:0 0 10px #52cca0;
+}
+
+.effects li:hover{
+    background:#5344c3;
+}
